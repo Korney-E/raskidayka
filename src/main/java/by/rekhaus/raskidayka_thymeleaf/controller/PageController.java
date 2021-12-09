@@ -53,6 +53,7 @@ POST запроса. Название переменной должно быть
     public String admin(Model model) {
         model.addAttribute("title", "Панель администратора");
         return "admin/admin";
+
     }
 
 
