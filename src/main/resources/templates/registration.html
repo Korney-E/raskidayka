@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:insert="blocks/head :: head"/>
+
+
+<header th:insert="blocks/header_bottom :: header_bottom"/>
+<header th:insert="blocks/shoping_cart :: shoping_cart"/>
+
+
+<body>
+
+<!-- Header Section Start -->
+<div class="header section">
+
+    <!-- Header Top Start -->
+    <div class="header-top bg-primary">
+        <div class="container">
+            <div class="row align-items-center">
+
+                <!-- Header Top Message Start -->
+                <div class="col-md-12 col-lg-6 text-lg-start text-center">
+                    <div class="header-top-msg-wrapper">
+                        <p class="header-top-message">Добро пожаловать в магазин детских игрушек Раскидайка</p>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-6 text-end d-none d-lg-block">
+                    <div class="header-top-settings">
+                        <ul class="nav align-items-center justify-content-end">
+                            <li class="curreny-wrap">
+                                $ Currency
+                                <i class="fa fa-angle-down"></i>
+                                <ul class="dropdown-list curreny-list">
+                                    <li><a href="#">$ USD</a></li>
+                                    <li><a href="#">€ EURO</a></li>
+                                </ul>
+                            </li>
+                            <li class="language"> English<i class="fa fa-angle-down"></i>
+                                <ul class="dropdown-list">
+                                    <li><a href="#">english</a>
+                                    </li>
+                                    <li><a href="#">french</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- Header Top Message End -->
+            </div>
+        </div>
+    </div>
+    <!-- Header Top End -->
+
+    <!-- Header Bottom Start -->
+    <c:import url="layouts/header_bottom.jsp"/>
+    <c:import url="layouts/shopping_cart.jsp"/>
+
+
+    <!-- Breadcrumb Area Start -->
+    <div class="breadcrumb-area bg-primary">
+        <div class="container ">
+            <div class="row align-items-center">
+                <div class="breadcrumb-content ">
+                    <ul>
+                        <li>
+                            <a href="/"><i class="fa fa-home"></i> </a>
+                        </li>
+                        <li class="active"> Страница регистрации</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Breadcrumb Area End -->
+
+</div>
+<!-- Breadcrumb Section End -->
+
+<!-- Register Section Start -->
+<div class="section section-margin">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-md-8 m-auto">
+                <!-- Register Wrapper Start -->
+                <div class="register-wrapper">
+
+                    <!-- Login Title & Content Start -->
+                    <div class="section-content text-center mb-5">
+                        <h2 class="title mb-2">Создать аккаунт</h2>
+                        <p class="desc-content mb-0">Пожалуйста, зарегистрируйтесь</p>
+                        <p class="desc-content mb-0">используя данные учетной записи ниже.</p>
+                    </div>
+                    <!-- Login Title & Content End -->
+
+                    <div>
+                        <form action="/registration" method="post">
+                            <div class="single-input-item mb-3">
+                                <input type="text" name="username" placeholder="Логин">
+                            </div>
+                            <div class="single-input-item mb-3">
+                                <input type="text" name="first_name" placeholder="Фамилия">
+                            </div>
+                            <div class="single-input-item mb-3">
+                                <input type="text" name="last_name" placeholder="Имя">
+                            </div>
+                            <div class="single-input-item mb-3">
+                                <input type="text" name="email" placeholder="E-mail">
+                            </div>
+                            <div class="single-input-item mb-3">
+                                <input type="text" name="password" placeholder="Пароль">
+                            </div>
+
+                            <!--                            &lt;!&ndash; Checkbox & Subscribe Label Start &ndash;&gt;-->
+                            <!--                            <div class="single-input-item mb-3">-->
+                            <!--                            <div class="login-reg-form-meta d-flex align-items-center justify-content-between">-->
+                            <!--                                <div class="remember-meta mb-3">-->
+                            <!--                                    <div class="custom-control custom-checkbox">-->
+                            <!--                                        <input type="checkbox" class="custom-control-input" id="rememberMe-2">-->
+                            <!--                                        <label class="custom-control-label" for="rememberMe-2">Subscribe Our Newsletter</label>-->
+                            <!--                                        </div>-->
+                            <!--                                    </div>-->
+                            <!--                                </div>-->
+                            <!--                            </div>-->
+                            <!--                            &lt;!&ndash; Checkbox & Subscribe Label End &ndash;&gt;-->
+
+                            <div class="single-input-item mb-3" style="text-align: center">
+                                <button type="submit" class="btn btn btn-dark btn-hover-primary rounded-0">
+                                    Зарегистрироваться
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+                <!-- Register Wrapper End -->
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Register Section End -->
+
+<!-- Footer Section Start -->
+<div th:insert="blocks/footer :: footer"/>
+<!-- Footer Section End -->
+
+</body>
+</html>

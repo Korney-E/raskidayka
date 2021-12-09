@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:insert="blocks/head :: head"/>
+<html>
+
+
+<body>
+<!-- Header Section Start -->
+<div class="header section">
+
+
+    <!-- Breadcrumb Area Start -->
+    <div class="breadcrumb-area bg-primary">
+        <div class="container ">
+            <div class="row align-items-center">
+                <div class="breadcrumb-content ">
+                    <ul>
+                        <li>
+                            <a href="/"><i class="fa fa-home"></i> </a>
+                        </li>
+                        <li class="active"> Страница аунтификации</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Breadcrumb Area End -->
+
+</div>
+<!-- Breadcrumb Section End -->
+
+<!-- Register Section Start -->
+<div class="section section-margin">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-md-8 m-auto">
+                <!-- Register Wrapper Start -->
+                <div class="register-wrapper">
+
+                    <!-- Login Title & Content Start -->
+                    <div class="section-content text-center mb-5">
+                        <h2 class="title mb-2">Аутентификация</h2>
+                        <p class="desc-content mb-0">Пожалуйста, аутентифицируйтесь</p>
+                        <p class="desc-content mb-0">введите свой логин и пароль</p>
+                        <p class="desc-content mb-0">либо зарегистрируйтесь</p>
+                    </div>
+                    <!-- Login Title & Content End -->
+
+                    <div th:if="${param.error}" style="text-align: center">
+                        Неправильный логин или пароль
+                    </div>
+                    <div th:if="${param.logout}" style="text-align: center">
+                        Вы вышли из системы
+                    </div>
+                    <form th:action="@{/login}" method="post">
+                        <div class="single-input-item mb-1" style="text-align: center"><label> Логин: <input type="text"
+                                                                                                             name="username"
+                                                                                                             placeholder="Логин"/>
+                        </label></div>
+                        <div class="single-input-item mb-1" style="text-align: center"><label> Пароль: <input
+                                type="password" name="password" placeholder="Пароль"/> </label></div>
+                        <div class="single-input-item mb-3" style="text-align: center">
+                            <button type="submit" class="btn btn btn-dark btn-hover-primary rounded-0">Войти</button>
+                        </div>
+
+                    </form>
+
+
+                </div>
+                <!-- Register Wrapper End -->
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Register Section End -->
+
+<!-- Footer Section Start -->
+<div th:insert="blocks/footer :: footer"/>
+<!-- Footer Section End -->
+
+</body>
+</html>

@@ -1,0 +1,14 @@
+.outer {
+    position: relative;
+}
+
+.inner {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.preview {
+    margin-top: auto;
+    margin-bottom: auto;
+}

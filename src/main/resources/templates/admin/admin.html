@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head th:insert="blocks/head :: head"/>
+
+
+<body>
+    <header>
+        <div th:insert="blocks/header_registration :: header_registration"></div>
+        <div th:insert="blocks/header_bottom :: header_bottom"></div>
+        <div th:insert="blocks/shoping_cart :: shoping_cart"></div>
+
+        <div sec:authorize="hasRole('ADMIN')">
+            <div th:insert="blocks/header_admin :: header_admin"></div>
+        </div>
+    </header>
+</body>
+
+</html>

@@ -1,0 +1,9 @@
+<div th:fragment="header_registration">
+    <div class="header-actions col-9 mt-2">
+        <a href="/registration">Регистрация</a>
+        <a th:inline="text"> Привет [[${#httpServletRequest.remoteUser}]]</a>
+        <form th:action="@{/logout}" method="post">
+            <input style="border-color: transparent" type="submit" value="Выйти"/>
+        </form>
+    </div>
+</div>
