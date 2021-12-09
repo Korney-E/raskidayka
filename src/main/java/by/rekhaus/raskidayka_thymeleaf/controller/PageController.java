@@ -54,6 +54,7 @@ POST запроса. Название переменной должно быть
         model.addAttribute("title", "Панель администратора");
         return "admin/admin";
 
+
     }
 
 
