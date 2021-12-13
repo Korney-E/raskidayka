@@ -37,7 +37,7 @@
                 <!-- Второй слайд-->
                 <div class="hero-slide-item swiper-slide">
                     <div class="hero-slide-bg">
-                        <img src="/img/slider/slider1-1.png" alt="Slider Image"/>
+                        <img src="/img/slider/slider1-1_en.png" alt="Slider Image"/>
                     </div>
                     <!--  Акция -50% Start-->
                     <!--                <div class="container">-->
@@ -64,31 +64,6 @@
     <!-- Основной баннер End -->
     <p th:text="#{app.title}">Hello!</p>
 
-    <div role="main" class="container">
-        <div class="jumbotron">
-
-            <div class="dropdown">
-                <button class="btn btn-danger dropdown-toggle" type="button" id="dropdownMenuButton"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" th:utext="#{app.theme.title}"></button>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <a class="dropdown-item" href="?theme=pulse" th:utext="#{app.theme.pulse}"></a>
-                    <a class="dropdown-item" href="?theme=cerulean" th:utext="#{app.theme.cerulean}"></a>
-                </div>
-            </div>
-
-            <hr/>
-            <!-- Dropdown for selecting language -->
-            <div class="dropdown">
-                <button class="btn btn-danger dropdown-toggle" type="button" id="dropdownMenuButton"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" th:text="#{app.lang.title}"/></button>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <a class="dropdown-item" href="?lang=en" th:text="#{app.lang.english}"/></a>
-                    <a class="dropdown-item" href="?lang=hi" th:text="#{app.lang.rus}"/></a>
-                </div>
-            </div>
-
-        </div>
-    </div>
 
 
 

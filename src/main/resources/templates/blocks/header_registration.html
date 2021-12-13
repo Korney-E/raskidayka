@@ -1,9 +1,37 @@
 <div th:fragment="header_registration">
-    <div class="header-actions col-9 mt-2">
+
+    <div role="main" class="container">
+        <div class="jumbotron">
+
+            <div class="dropdown " style="margin-right: 2em; float: left">
+                <button class="btn btn-danger dropdown-toggle" style="background-color: white; color: #0a0a0a" type="button" id="dropdownMenuButton1"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" th:utext="#{app.theme.title}"></button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                    <a class="dropdown-item" href="?theme=pulse" th:utext="#{app.theme.pulse}"></a>
+                    <a class="dropdown-item" href="?theme=cerulean" th:utext="#{app.theme.cerulean}"></a>
+                </div>
+            </div>
+
+
+            <!-- Dropdown for selecting language -->
+            <div class="dropdown" style="float: left">
+                <button class="btn btn-danger dropdown-toggle" style="background-color: white; color: #0a0a0a" type="button" id="dropdownMenuButton2"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" th:text="#{app.lang.title}"></button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
+                    <a class="dropdown-item" href="?lang=en" th:text="#{app.lang.english}"></a>
+                    <a class="dropdown-item" href="?lang=ru" th:text="#{app.lang.rus}"></a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="header-actions col-4 mt-2">
         <a href="/registration">Регистрация</a>
         <a th:inline="text"> Привет [[${#httpServletRequest.remoteUser}]]</a>
         <form th:action="@{/logout}" method="post">
             <input style="border-color: transparent" type="submit" value="Выйти"/>
         </form>
     </div>
+
 </div>
