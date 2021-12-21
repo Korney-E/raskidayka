@@ -1,11 +1,14 @@
 package by.rekhaus.raskidayka_thymeleaf.controller;
 
+import by.rekhaus.raskidayka_thymeleaf.entity.User;
 import by.rekhaus.raskidayka_thymeleaf.entity.UserEntity;
 import by.rekhaus.raskidayka_thymeleaf.repositoriy.UserRepository;
+import by.rekhaus.raskidayka_thymeleaf.repositoriy.UserRoleRepository;
 import org.hibernate.mapping.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,7 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class PageController {
     @Autowired
-    UserRepository userRepository;
+    UserRoleRepository userRepository;
 
 
     @RequestMapping("/")
@@ -44,21 +47,13 @@ POST запроса. Название переменной должно быть
                           @RequestParam String email,
                           @RequestParam String password,
                           Model model) {
-        UserEntity user = new UserEntity(username, first_name, last_name, email, password);
+
+        User user = new User(username, first_name, last_name, email, password);
         userRepository.save(user);
 
         return "redirect:/";
     }
 
-    @RequestMapping("/admin")
-    public String admin(Model model) {
-        model.addAttribute("title", "Панель администратора");
-        return "admin/admin";
-    }
-
-    @GetMapping("/admin/toys_index")
-    public String admin_toys_index(Model model) {
-//        model.put("message");
-        return "/admin/toys/toys_index";
-    }
+//
+    
 }
