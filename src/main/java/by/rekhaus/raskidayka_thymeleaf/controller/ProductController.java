@@ -2,12 +2,9 @@ package by.rekhaus.raskidayka_thymeleaf.controller;
 
 //import by.rekhaus.raskidayka_thymeleaf.entity.ProductEntity;
 //import by.rekhaus.raskidayka_thymeleaf.repository.ProductRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 /*Для передачи значений из БД на определенную страницу (шаблон) необходимо
 1. Создать репозиторий для интересующей entity при помощи которой будут осуществлятьс crud действия с сообветствующей таблицей
