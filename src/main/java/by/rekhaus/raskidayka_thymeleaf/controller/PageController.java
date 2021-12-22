@@ -22,6 +22,12 @@ public class PageController {
         return "index";
     }
 
+    @RequestMapping("/index_auth")
+    public String index_auth(Model model) {
+        model.addAttribute("title", "Раскидайка");
+        return "index_auth";
+    }
+
     @RequestMapping("/registration")
     public String register(Model model) {
         model.addAttribute("title", "Регистрация");
