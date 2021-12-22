@@ -1,0 +1,7 @@
+<div class="container">
+    <h1 th:inline="text"> Привет [[${#httpServletRequest.remoteUser}]]</h1>
+    <h2>Поздравляю вы прошли аунтификацию</h2>
+    <form action="/logout" method="post">
+        <button type="submit">Выйти</button>
+    </form>
+</div>

@@ -1,7 +1,7 @@
 package by.rekhaus.raskidayka_thymeleaf.controller;
 
-import by.rekhaus.raskidayka_thymeleaf.entity.ProductEntity;
-import by.rekhaus.raskidayka_thymeleaf.repositoriy.ProductRepository;
+//import by.rekhaus.raskidayka_thymeleaf.entity.ProductEntity;
+//import by.rekhaus.raskidayka_thymeleaf.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -63,16 +63,16 @@ post.ifPresent(res::add);
 
 @Controller
 public class ProductController {
-    @Autowired
-    private ProductRepository productRepository;
-
-    @GetMapping("/toys_educational")
-    public String index(Model model) {
-        Iterable<ProductEntity> product = productRepository.findAll();
-        model.addAttribute("product", product);
-        model.addAttribute("title", "Товары");
-        return "admin/products/product-main";
-    }
+//    @Autowired
+//    private ProductRepository productRepository;
+//
+//    @GetMapping("/toys_educational")
+//    public String index(Model model) {
+//        Iterable<ProductEntity> product = productRepository.findAll();
+//        model.addAttribute("product", product);
+//        model.addAttribute("title", "Товары");
+//        return "admin/products/product-main";
+//    }
 
     @GetMapping("/product-add")
     public String blogAdd(Model model) {
@@ -81,15 +81,15 @@ public class ProductController {
     }
 
     //Обработка POST запроса из формы добавления статьи
-    @PostMapping("/product-add")
-    public String blogPostAdd(@RequestParam String title,
-                              @RequestParam String anons,
-                              @RequestParam String full_text,
-                              Model model) {
-        ProductEntity product = new ProductEntity(title, anons, full_text);
-        productRepository.save(product);
-        return "redirect:/toys_educational";
-    }
+//    @PostMapping("/product-add")
+//    public String blogPostAdd(@RequestParam String title,
+//                              @RequestParam String anons,
+//                              @RequestParam String full_text,
+//                              Model model) {
+//        ProductEntity product = new ProductEntity(title, anons, full_text);
+//        productRepository.save(product);
+//        return "redirect:/toys_educational";
+//    }
 //
 //    // Обработчик запроса для отображения страницы с полным текстом статьи
 //    @GetMapping("/blog/{id}")

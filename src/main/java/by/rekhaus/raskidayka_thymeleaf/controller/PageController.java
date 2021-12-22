@@ -1,8 +1,7 @@
 package by.rekhaus.raskidayka_thymeleaf.controller;
 
-import by.rekhaus.raskidayka_thymeleaf.entity.UserEntity;
-import by.rekhaus.raskidayka_thymeleaf.repositoriy.UserRepository;
-import org.hibernate.mapping.Map;
+//import by.rekhaus.raskidayka_thymeleaf.entity.UserEntity;
+//import by.rekhaus.raskidayka_thymeleaf.repository.UserRepositoryV1;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,8 +12,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class PageController {
-    @Autowired
-    UserRepository userRepository;
+//    @Autowired
+//    UserRepositoryV1 userRepositoryV1;
 
 
     @RequestMapping("/")
@@ -37,18 +36,18 @@ public class PageController {
 POST запроса. Название переменной должно быть таким же как и в форме в значении name.
 После этого создаем объект той таблицы (Entity) в которую хотим передать полученные из POST запроса значения
  */
-    @PostMapping("/registration")
-    public String newUser(@RequestParam String username,
-                          @RequestParam String first_name,
-                          @RequestParam String last_name,
-                          @RequestParam String email,
-                          @RequestParam String password,
-                          Model model) {
-        UserEntity user = new UserEntity(username, first_name, last_name, email, password);
-        userRepository.save(user);
-
-        return "redirect:/";
-    }
+//    @PostMapping("/registration")
+//    public String newUser(@RequestParam String username,
+//                          @RequestParam String first_name,
+//                          @RequestParam String last_name,
+//                          @RequestParam String email,
+//                          @RequestParam String password,
+//                          Model model) {
+//        UserEntity user = new UserEntity(username, first_name, last_name, email, password);
+//        userRepositoryV1.save(user);
+//
+//        return "redirect:/";
+//    }
 
     @RequestMapping("/admin")
     public String admin(Model model) {

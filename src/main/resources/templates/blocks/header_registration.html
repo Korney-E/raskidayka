@@ -27,6 +27,7 @@
     </div>
 
     <div class="header-actions col-4 mt-2">
+        <a href="/login">Войти</a>
         <a href="/registration">Регистрация</a>
         <a th:inline="text"> Привет [[${#httpServletRequest.remoteUser}]]</a>
         <form th:action="@{/logout}" method="post">
