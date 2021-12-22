@@ -34,6 +34,12 @@ public class PageController {
         return "about";
     }
 
+    @GetMapping("/contact")
+    public String contact(Model model) {
+        model.addAttribute("title", "О нас");
+        return "contact";
+    }
+
     @RequestMapping("/registration")
     public String register(Model model) {
         model.addAttribute("title", "Регистрация");
