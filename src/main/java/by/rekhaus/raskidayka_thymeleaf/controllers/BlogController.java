@@ -1,13 +1,18 @@
-package by.rekhaus.raskidayka_thymeleaf.controller;
+package by.rekhaus.raskidayka_thymeleaf.controllers;
 
-//import by.rekhaus.raskidayka_thymeleaf.entity.ProductEntity;
-//import by.rekhaus.raskidayka_thymeleaf.repository.ProductRepository;
+
+import by.rekhaus.raskidayka_thymeleaf.model.Post;
+import by.rekhaus.raskidayka_thymeleaf.repository.PostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import java.util.ArrayList;
+import java.util.Optional;
 
 /*Для передачи значений из БД на определенную страницу (шаблон) необходимо
 1. Создать репозиторий для интересующей entity при помощи которой будут осуществлятьс crud действия с сообветствующей таблицей
@@ -62,84 +67,92 @@ post.ifPresent(res::add);
 
 
 @Controller
-public class ProductController {
-//    @Autowired
-//    private ProductRepository productRepository;
-//
-//    @GetMapping("/toys_educational")
-//    public String index(Model model) {
-//        Iterable<ProductEntity> product = productRepository.findAll();
-//        model.addAttribute("product", product);
-//        model.addAttribute("title", "Товары");
-//        return "admin/products/product-main";
-//    }
+public class BlogController {
+    @Autowired
+    private PostRepository postRepository;
 
-    @GetMapping("/product-add")
+    @GetMapping("/blog")
+    public String index(Model model) {
+        Iterable<Post> posts = postRepository.findAll();
+        model.addAttribute("posts", posts);
+        model.addAttribute("title", "Новости магазина");
+        return "blog-main";
+    }
+
+    @GetMapping("/blog_admin")
+    public String index_admin(Model model) {
+        Iterable<Post> posts = postRepository.findAll();
+        model.addAttribute("posts", posts);
+        model.addAttribute("title", "Новости магазина");
+        return "blog-main_admin";
+    }
+
+    @GetMapping("/blog_admin/add")
     public String blogAdd(Model model) {
-        model.addAttribute("title", "Добавление товара");
-        return "admin/products/product-add";
+        model.addAttribute("title", "Добавление пользователя");
+        return "blog-add";
     }
 
     //Обработка POST запроса из формы добавления статьи
-//    @PostMapping("/product-add")
-//    public String blogPostAdd(@RequestParam String title,
-//                              @RequestParam String anons,
-//                              @RequestParam String full_text,
-//                              Model model) {
-//        ProductEntity product = new ProductEntity(title, anons, full_text);
-//        productRepository.save(product);
-//        return "redirect:/toys_educational";
-//    }
-//
-//    // Обработчик запроса для отображения страницы с полным текстом статьи
-//    @GetMapping("/blog/{id}")
-//    public String blogDetails(@PathVariable(value = "id") Long postId, Model model) {
-//        if (!postRepository.existsById(postId)) {
-//            return "redirect:/blog";
-//        }
-//        model.addAttribute("title", "Полная статья");
-//        Optional<Post> post = postRepository.findById(postId);
-//        ArrayList<Post> res = new ArrayList<>();
-//        post.ifPresent(res::add);
-//        model.addAttribute("allposts", res);
-//        return "blog-details";
-//    }
-//
-//    // Обработчик запроса для отображения страницы с редактирование
-//    @GetMapping("/blog/{id}/edit")
-//    public String blogEdit(@PathVariable(value = "id") Long postId, Model model) {
-//        if (!postRepository.existsById(postId)) {
-//            return "redirect:/blog";
-//        }
-//        model.addAttribute("title", "Редактирование статьи");
-//        Optional<Post> post = postRepository.findById(postId);
-//        ArrayList<Post> res = new ArrayList<>();
-//        post.ifPresent(res::add);
-//        model.addAttribute("allposts", res);
-//        return "blog-edit";
-//    }
-//
-//    //Обработка POST запроса из формы редактирование статьи
-//    @PostMapping("/blog/{id}/edit")
-//    public String blogPostUpdate(@PathVariable(value = "id") Long postId,
-//                                 @RequestParam String title,
-//                                 @RequestParam String anons,
-//                                 @RequestParam String full_text,
-//                                 Model model) {
-//        Post post = postRepository.findById(postId).orElseThrow(IllegalStateException::new);
-//        post.setTitle(title);
-//        post.setAnons(anons);
-//        post.setFull_text(full_text);
-//        postRepository.save(post);
-//        return "redirect:/";
-//    }
-//
-//    //Обработка POST запроса из формы удаление статьи
-//    @PostMapping("/blog/{id}/delite")
-//    public String blogPostDelite(@PathVariable(value = "id") Long postId,
-//                                 Model model) {
-//        Post post = postRepository.findById(postId).orElseThrow(IllegalStateException::new);
-//        postRepository.delete(post);
-//        return "redirect:/";
-//    }
+    @PostMapping("/blog_admin/add")
+    public String blogPostAdd(@RequestParam String title,
+                              @RequestParam String anons,
+                              @RequestParam String full_text,
+                              Model model) {
+        Post post = new Post(title, anons, full_text);
+        postRepository.save(post);
+        return "redirect:/blog";
+    }
+
+    // Обработчик запроса для отображения страницы с полным текстом статьи
+    @GetMapping("/blog_admin/{id}")
+    public String blogDetails(@PathVariable(value = "id") Long postId, Model model) {
+        if (!postRepository.existsById(postId)) {
+            return "redirect:/blog";
+        }
+        model.addAttribute("title", "Полная статья");
+        Optional<Post> post = postRepository.findById(postId);
+        ArrayList<Post> res = new ArrayList<>();
+        post.ifPresent(res::add);
+        model.addAttribute("allposts", res);
+        return "blog-details";
+    }
+
+    // Обработчик запроса для отображения страницы с редактирование
+    @GetMapping("/blog_admin/{id}/edit")
+    public String blogEdit(@PathVariable(value = "id") Long postId, Model model) {
+        if (!postRepository.existsById(postId)) {
+            return "redirect:/blog";
+        }
+        model.addAttribute("title", "Редактирование статьи");
+        Optional<Post> post = postRepository.findById(postId);
+        ArrayList<Post> res = new ArrayList<>();
+        post.ifPresent(res::add);
+        model.addAttribute("allposts", res);
+        return "blog-edit";
+    }
+
+    //Обработка POST запроса из формы редактирование статьи
+    @PostMapping("/blog_admin/{id}/edit")
+    public String blogPostUpdate(@PathVariable(value = "id") Long postId,
+                                 @RequestParam String title,
+                                 @RequestParam String anons,
+                                 @RequestParam String full_text,
+                                 Model model) {
+        Post post = postRepository.findById(postId).orElseThrow(IllegalStateException::new);
+        post.setTitle(title);
+        post.setAnons(anons);
+        post.setFull_text(full_text);
+        postRepository.save(post);
+        return "redirect:/index_auth";
+    }
+
+    //Обработка POST запроса из формы удаление статьи
+    @PostMapping("/blog_admin/{id}/delite")
+    public String blogPostDelite(@PathVariable(value = "id") Long postId,
+                                 Model model) {
+        Post post = postRepository.findById(postId).orElseThrow(IllegalStateException::new);
+        postRepository.delete(post);
+        return "redirect:/index_auth";
+    }
 }

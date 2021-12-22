@@ -22,7 +22,7 @@ import java.util.concurrent.TimeUnit;
 
 @Configuration
 //@EnableWebMvc
-@ComponentScan("by.rekhaus.raskidayka_thymeleaf.controller")
+@ComponentScan("by.rekhaus.raskidayka_thymeleaf.controllers")
 public class MvcWebConfig implements WebMvcConfigurer {
 
     @Bean

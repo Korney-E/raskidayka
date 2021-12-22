@@ -1,4 +1,4 @@
-package by.rekhaus.raskidayka_thymeleaf.controller;
+package by.rekhaus.raskidayka_thymeleaf.controllers;
 
 import by.rekhaus.raskidayka_thymeleaf.model.User;
 import by.rekhaus.raskidayka_thymeleaf.repository.UserRepository;
@@ -26,6 +26,12 @@ public class PageController {
     public String index_auth(Model model) {
         model.addAttribute("title", "Раскидайка");
         return "index_auth";
+    }
+
+    @GetMapping("/about")
+    public String about(Model model) {
+        model.addAttribute("title", "О нас");
+        return "about";
     }
 
     @RequestMapping("/registration")
